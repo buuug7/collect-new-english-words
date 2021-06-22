@@ -8,8 +8,6 @@
   },
   "permissions": [
     "storage",
-    "activeTab",
-    "scripting",
     "contextMenus"
   ],
   "options_page": "options.html",
