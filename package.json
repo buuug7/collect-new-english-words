@@ -1,0 +1,24 @@
+{
+  "name": "my-new-words-book",
+  "version": "1.0.0",
+  "description": "",
+  "main": "background.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/buuug7/my-new-words-book.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/buuug7/my-new-words-book/issues"
+  },
+  "homepage": "https://github.com/buuug7/my-new-words-book#readme",
+  "dependencies": {
+    "@buuug7/simplify-button": "^0.0.9",
+    "utilities-css": "^4.5.0"
+  }
+}

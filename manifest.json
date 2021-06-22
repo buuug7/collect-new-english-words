@@ -1,0 +1,29 @@
+{
+  "name": "collect new english words",
+  "description": "collect new english words to my new words book",
+  "version": "0.1",
+  "manifest_version": 3,
+  "background": {
+    "service_worker": "background.js"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "contextMenus"
+  ],
+  "options_page": "options.html",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "/images/favicon-16x16.png",
+      "32": "/images/favicon-32x32.png",
+      "128": "/images/favicon-128x128.png"
+    }
+  },
+  "icons": {
+    "16": "/images/favicon-16x16.png",
+    "32": "/images/favicon-32x32.png",
+    "128": "/images/favicon-128x128.png"
+  }
+}
