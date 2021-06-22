@@ -8,6 +8,14 @@ function generateUID() {
   return firstPart + secondPart;
 }
 
+function uuidv4() {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+    const r = (Math.random() * 16) | 0,
+      v = c == "x" ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
+
 async function createWordDom(word) {
   const dom = document.createElement("div");
   dom.classList.add("word");
@@ -95,10 +103,12 @@ function sendNotification(message) {
 }
 
 async function addWord(text, words) {
-  const _word = text.trim();
+  let _word = text.trim();
   if (!_word) {
     return;
   }
+
+  _word = _word.toLowerCase();
 
   const index = words.findIndex((it) => it.text === text);
 
