@@ -15,6 +15,9 @@ chrome.contextMenus.onClicked.addListener(function (itemData) {
     console.log(itemData);
     getWords().then((words) => {
       const selectionText = itemData.selectionText;
+      if (!selectionText) {
+        return;
+      }
       addWord(selectionText, words).then((r) => console.log(r));
     });
   }

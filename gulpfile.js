@@ -18,7 +18,7 @@ function copyDependencies() {
 function zipFiles() {
   const zipFiles = [
     "images/*",
-    "vendor/*",
+    "vendor/**/*",
     "background.js",
     "lib.js",
     "main.css",

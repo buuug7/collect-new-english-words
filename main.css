@@ -37,6 +37,10 @@ body {
 
 /* options.html */
 
+.no-words {
+  text-align: center;
+}
+
 .options-body {
   background-color: #f7f7f7;
 }

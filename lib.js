@@ -31,7 +31,7 @@ async function createWordDom(word) {
 
   dom.innerHTML = `
 <div class="display-flex flex-center">
-  <button class="btn small rm-word">Delete</button>
+  <input type="checkbox">
   <a class="ml-2 word-text" href=${detailLink} target="_blank">${word.text}</a>
 </div>
 `;
@@ -69,17 +69,54 @@ async function getWords() {
   });
 }
 
-async function deleteWord(id, words) {
-  const _confirm = window.confirm("Do you really want to delete this word?");
-
-  if (!_confirm) {
-    return;
-  }
-
-  const filteredWords = words.filter((it) => it.id !== id);
-  return updateWords(filteredWords);
+function sendNotification(message) {
+  chrome.notifications.create(`${generateUID()}`, {
+    message: message,
+    title: "collect new english words",
+    type: "basic",
+    iconUrl: "images/icon-64x64.png",
+  });
 }
 
+/**
+ *
+ * @param {string} str
+ * @param {Array} words
+ * @return {Promise<string>}
+ */
+async function addWord(str, words) {
+  let _str = str.trim();
+
+  _str = _str.toLowerCase();
+  const arr = _str.split(" ").filter((it) => it.length > 0);
+
+  const duplicate = [];
+  const needAdded = [];
+
+  for (let text of arr) {
+    const index = words.findIndex((it) => it.text === text);
+    index !== -1 ? duplicate.push(text) : needAdded.push(text);
+  }
+
+  if (duplicate.length > 0) {
+    sendNotification(`<${duplicate.join(", ")}> is already collected.`);
+  }
+
+  const _newWords = needAdded.map((text) => {
+    return {
+      id: generateUID(),
+      text: text,
+    };
+  });
+
+  return updateWords([..._newWords, ...words]);
+}
+
+/**
+ *
+ * @param words
+ * @return {Promise<string>}
+ */
 async function updateWords(words) {
   return new Promise((resolve, reject) => {
     chrome.storage.sync.set(
@@ -93,50 +130,15 @@ async function updateWords(words) {
   });
 }
 
-function sendNotification(message) {
-  chrome.notifications.create(`${generateUID()}`, {
-    message: message,
-    title: "collect new english words",
-    type: "basic",
-    iconUrl: "images/icon-64x64.png",
+/**
+ *
+ * @param {Array} ids
+ * @return {Promise<string>}
+ */
+async function deleteWordByIds(ids) {
+  const words = await getWords();
+  const filteredWords = words.filter((it) => {
+    return !ids.includes(it.id);
   });
-}
-
-async function addWord(text, words) {
-  let _word = text.trim();
-  if (!_word) {
-    return;
-  }
-
-  _word = _word.toLowerCase();
-
-  const index = words.findIndex((it) => it.text === text);
-
-  if (index !== -1) {
-    sendNotification(`**${_word}** is already collected.`);
-    return;
-  }
-
-  const _words = [...words];
-  _words.push({
-    id: generateUID(),
-    text: _word,
-  });
-  return updateWords(_words);
-}
-
-function AddDeleteListener(words) {
-  document.querySelector(`#words`).addEventListener("click", (e) => {
-    const target = e.target;
-    const classList = Array.from(target.classList);
-    if (classList.includes("rm-word")) {
-      const parent = target.closest(".word");
-      const id = parent.dataset.id;
-      if (id) {
-        deleteWord(id, words).then((r) => {
-          location.reload();
-        });
-      }
-    }
-  });
+  return await updateWords(filteredWords);
 }
