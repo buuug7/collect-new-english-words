@@ -1,53 +1,102 @@
 html {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 html,
 body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .nowrap {
-    white-space: nowrap;
+  white-space: nowrap;
 }
 
-
 .menu {
-    padding: 0;
-    list-style: none;
-    white-space: nowrap;
-    margin: 0;
+  padding: 0;
+  list-style: none;
+  white-space: nowrap;
+  margin: 0;
 }
 
 .menu > li {
-    padding: 8px 16px;
-    border-bottom: 1px solid #eee;
-    cursor: context-menu;
+  padding: 8px 16px;
+  border-bottom: 1px solid #eee;
+  cursor: context-menu;
 }
 
 .menu > li:hover {
-    background-color: rgba(1,1,1,0.1);
+  background-color: rgba(1, 1, 1, 0.1);
 }
 
+/* options.html */
 
-#words > .word {
-    /*background-color: rgba(0,0,0, .1);*/
-    border-bottom: 1px solid #eee;
-    margin-bottom: 1rem;
-    padding: 4px;
-    position: relative;
+.options-body {
+  background-color: #f7f7f7;
+}
+
+.options-header {
+  background-color: #fff;
+  width: 100%;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem;
+  box-shadow: 0 6px 6px rgb(31 107 255 / 5%);
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.options-logo {
+  width: 32px;
+  height: 32px;
+  position: relative;
+}
+
+.options-container {
+  margin-top: 4rem;
+}
+
+@media (max-width: 640px) {
+  .options-header,
+  .left {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+  }
+
+  .options-header .left > * {
+    margin-bottom: 0.3rem !important;
+  }
+
+  .options-container {
+    margin-top: 10rem;
+  }
+}
+
+#words {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 1rem;
+}
+#words > .word {
+  border-bottom: 1px solid #eee;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
 }
 
 #words > .word > .word-text {
+}
 
+.words-list-2-c {
+  grid-template-columns: repeat(2, 1fr) !important;
 }

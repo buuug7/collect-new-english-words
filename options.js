@@ -1,57 +1,49 @@
-const wordsDom = document.querySelector('#words')
+const dom = document.querySelector("#words");
 
-let newWords
+getWords().then(async (words) => {
+  console.log("words", words);
+  const titleDom = document.querySelector("#words-count");
+  titleDom.textContent = `Count (${words.length})`;
 
-function handleWordClick (text) {
-  const _confirm = window.confirm('Did really want to delete this word?')
-
-  if (!_confirm) {
-    return
+  for (let word of words) {
+    dom.appendChild(await createWordDom(word));
   }
 
-  newWords = newWords.filter(it => it !== text)
-  chrome.storage.sync.set({
-    'newWords': newWords,
-  }, () => {
-    location.reload()
-  })
-}
+  getTranslateVendor().then((r) => {
+    console.log("getTranslateVendor", r);
+    if (r === "google") {
+      document.querySelector("#use-google-translate").checked = true;
+    }
+  });
 
-chrome.storage.sync.get('newWords', (data) => {
-  newWords = data['newWords'] || []
+  AddDeleteListener(words);
+});
 
-  for (let word of newWords) {
-    let span = document.createElement('span')
-    span.textContent = word
-    span.addEventListener('click', handleWordClick)
+document
+  .querySelector("#use-google-translate")
+  .addEventListener("change", (event) => {
+    const checked = event.target.checked;
+    setTranslateVendor(checked ? "google" : "").then((r) => {
+      location.reload();
+    });
+  });
 
-    wordsDom.appendChild(createWordDom(word))
-  }
-})
+document.querySelector("#toggle-view").addEventListener("change", (event) => {
+  document.querySelector("#words").classList.toggle("words-list-2-c");
+});
 
-function createWordDom (word) {
-  const dom = document.createElement('div')
-  dom.classList.add('word')
+document.querySelector("#output-to-json").addEventListener("click", (event) => {
+  getWords().then((words) => {
+    const _words = words.map((item) => item.text);
+    const data = JSON.stringify(_words);
+    const blob = new Blob([data], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
 
-  const innerDom = document.createElement('div')
-
-  const btn = document.createElement('button')
-  btn.textContent = 'x'
-  btn.classList.add('btn')
-  btn.classList.add('small')
-  btn.addEventListener('click', e => handleWordClick(word))
-
-  const wordText = document.createElement('a')
-  wordText.classList.add('word-text')
-  wordText.classList.add('ml-2')
-  wordText.href = `https://fanyi.baidu.com/#en/zh/${word}`
-  wordText.target = '_blank'
-  wordText.textContent = word
-
-  dom.appendChild(innerDom)
-
-  innerDom.appendChild(btn)
-  innerDom.appendChild(wordText)
-
-  return dom
-}
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "collect-new-english-words.json");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
+});

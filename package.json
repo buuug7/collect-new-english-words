@@ -1,10 +1,10 @@
 {
-  "name": "my-new-words-book",
+  "name": "collect-new-english-words",
   "version": "1.0.0",
   "description": "",
   "main": "background.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "gulp"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,11 @@
   "dependencies": {
     "@buuug7/simplify-button": "^0.0.9",
     "utilities-css": "^4.5.0"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.145",
+    "gulp": "^4.0.2",
+    "gulp-zip": "^5.1.0",
+    "prettier": "^2.3.1"
   }
 }
