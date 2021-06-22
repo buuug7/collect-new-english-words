@@ -55,7 +55,7 @@ function setTranslateVendor(vendor) {
       },
       () => {
         // sendNotification(`Translate is set to ${vendor ? vendor: 'baidu'}`);
-        resolve("update successfully!");
+        resolve(vendor);
       }
     );
   });

@@ -10,6 +10,8 @@ function copyDependencies() {
   const srcFiles = [
     "node_modules/@buuug7/simplify-button/index.css",
     "node_modules/utilities-css/dist/utilities-css.css",
+    "node_modules/react/umd/react.production.min.js",
+    "node_modules/react-dom/umd/react-dom.production.min.js",
   ];
 
   return src(srcFiles, { base: "node_modules" }).pipe(dest("vendor/"));
