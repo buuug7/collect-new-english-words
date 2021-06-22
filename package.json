@@ -19,10 +19,14 @@
   "homepage": "https://github.com/buuug7/my-new-words-book#readme",
   "dependencies": {
     "@buuug7/simplify-button": "^0.0.9",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "utilities-css": "^4.5.0"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.145",
+    "@types/react": "^17.0.11",
+    "@types/react-dom": "^17.0.8",
     "gulp": "^4.0.2",
     "gulp-zip": "^5.1.0",
     "prettier": "^2.3.1"

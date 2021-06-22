@@ -10,6 +10,7 @@ function copyDependencies() {
   const srcFiles = [
     "node_modules/@buuug7/simplify-button/index.css",
     "node_modules/utilities-css/dist/utilities-css.css",
+    "node_modules/vue/dist/vue.js",
   ];
 
   return src(srcFiles, { base: "node_modules" }).pipe(dest("vendor/"));

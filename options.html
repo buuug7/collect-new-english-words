@@ -1,42 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="main.css" />
+    <meta charset="utf8">
     <meta
       name="viewport"
       content="width=device-width, user-scalable=no, initial-scale=1.0"
     />
     <link rel="stylesheet" href="vendor/@buuug7/simplify-button/index.css" />
     <link rel="stylesheet" href="vendor/utilities-css/dist/utilities-css.css" />
+    <link rel="stylesheet" href="main.css" />
     <title>collect new english words</title>
   </head>
   <body class="options-body">
-    <div class="options-header display-flex align-items-center mb-2 px-4">
-      <div class="left display-flex flex-center">
-        <img class="options-logo" src="/images/icon-32x32.png" />
-        <span id="words-count" class="mx-1">(0)</span>
-        <div class="display-flex align-items-center mx-1">
-          <label for="use-google-translate" class="nowrap"
-            >use google translate</label
-          >
-          <input id="use-google-translate" type="checkbox" />
-        </div>
-        <div class="display-flex align-items-center ml-2 mx-1">
-          <label for="toggle-view" class="nowrap">toggle view</label>
-          <input id="toggle-view" type="checkbox" />
-        </div>
-      </div>
-
-      <div class="right">
-        <button class="btn small" id="delete-batch">batch deleted</button>
-        <button class="btn small nowrap primary" id="output-to-json">
-          output to json
-        </button>
-      </div>
-    </div>
-    <div class="options-container px-4 mb-4">
-      <div id="words"></div>
-    </div>
+    <div id="root"></div>
+    <script sr></script>
+    <script src="node_modules/react/umd/react.development.js"></script>
+    <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
     <script src="lib.js"></script>
     <script src="options.js"></script>
   </body>
