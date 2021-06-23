@@ -30,7 +30,7 @@ function HeaderLeft({ words }) {
         onChange: (event) => {
           const checked = event.target.checked;
           setTranslateVendor(checked ? "google" : "").then((r) => {
-            location.reload()
+            location.reload();
           });
         },
       })
