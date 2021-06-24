@@ -16,7 +16,6 @@ async function init() {
   });
 
   chrome.contextMenus.onClicked.addListener(async (itemData) => {
-    console.log(itemData);
     if (itemData.menuItemId !== menu.id) {
       return;
     }

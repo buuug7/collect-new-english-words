@@ -21,7 +21,3 @@ In order to make it easier for users to add English new words to the new words b
 ## why notification permission
 
 the notification gives the user response after some operations success or failed, it also gives users the best more interactive experience.
-
-## why tabs permission
-
-use tabs api for open new tab and manage the collected words.

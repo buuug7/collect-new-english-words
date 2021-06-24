@@ -1,13 +1,13 @@
 {
   "name": "collect new english words",
   "description": "collect new english words to my new words book",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "manifest_version": 3,
   "background": {
     "main": ["lib.js"],
     "service_worker": "background.js"
   },
-  "permissions": ["storage", "contextMenus", "notifications", "tabs"],
+  "permissions": ["storage", "contextMenus", "notifications"],
   "options_page": "options.html",
   "action": {
     "default_popup": "popup.html",

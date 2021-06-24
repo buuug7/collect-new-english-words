@@ -59,11 +59,7 @@ function HeaderRight({ words }) {
   const selectedItems = words.filter((it) => it.checked);
   const ids = selectedItems.map((it) => it.id);
   const texts = selectedItems.map((it) => it.text);
-
   const deleteCount = ids.length;
-
-  console.log(deleteCount);
-
   return e(
     "div",
     { className: "header-right" },
@@ -85,7 +81,7 @@ function HeaderRight({ words }) {
           });
         },
       },
-      `batch deleted ${deleteCount ? `(${deleteCount})` : ""}`
+      `delete ${deleteCount ? `(${deleteCount})` : ""}`
     ),
     e(
       "button",
