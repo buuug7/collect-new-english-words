@@ -1,24 +1,36 @@
 self.importScripts("lib.js");
 
-const menuId = `my_new_words_book_add_menu`;
+const menu = {
+  id: `my_new_words_book_add_menu`,
+  title: `Add to my words book(dev)`,
+};
 
-chrome.runtime.onInstalled.addListener(() => {
-  chrome.contextMenus.create({
-    title: "Add to my words book",
-    id: menuId,
-    contexts: ["selection"],
-  });
-});
+init().then(() => {});
 
-chrome.contextMenus.onClicked.addListener(function (itemData) {
-  if (itemData.menuItemId === menuId) {
-    console.log(itemData);
-    getWords().then((words) => {
-      const selectionText = itemData.selectionText;
-      if (!selectionText) {
-        return;
-      }
-      addWord(selectionText, words).then((r) => console.log(r));
+async function init() {
+  chrome.runtime.onInstalled.addListener(() => {
+    chrome.contextMenus.create({
+      ...menu,
+      contexts: ["selection"],
     });
-  }
-});
+  });
+
+  chrome.contextMenus.onClicked.addListener(async (itemData) => {
+    console.log(itemData);
+    if (itemData.menuItemId !== menu.id) {
+      return;
+    }
+    const words = await getWords();
+    const selectionText = itemData.selectionText;
+    await addWord(selectionText, words);
+  });
+
+  await disablePopupBehavior();
+}
+
+async function disablePopupBehavior() {
+  await chrome.action.setPopup({ popup: "" });
+  chrome.action.onClicked.addListener(() => {
+    chrome.tabs.create({ url: "book.html" });
+  });
+}

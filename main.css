@@ -18,6 +18,11 @@ body {
   white-space: nowrap;
 }
 
+.btn.small {
+  padding: .1rem .5rem;
+  transform: none;
+}
+
 .menu {
   padding: 0;
   list-style: none;

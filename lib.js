@@ -87,6 +87,10 @@ function sendNotification(message) {
 async function addWord(str, words) {
   let _str = str.trim();
 
+  if (!_str) {
+    return "";
+  }
+
   _str = _str.toLowerCase();
   const arr = _str.split(" ").filter((it) => it.length > 0);
 

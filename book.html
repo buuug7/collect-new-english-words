@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf8" />
     <meta
       name="viewport"
       content="width=device-width, user-scalable=no, initial-scale=1.0"
@@ -9,13 +9,13 @@
     <link rel="stylesheet" href="vendor/@buuug7/simplify-button/index.css" />
     <link rel="stylesheet" href="vendor/utilities-css/dist/utilities-css.css" />
     <link rel="stylesheet" href="main.css" />
-    <title></title>
+    <title>Book</title>
   </head>
-  <body>
-    <ul class="menu">
-      <li>Manage words book</li>
-      <li>Options</li>
-    </ul>
-    <script src="popup.js"></script>
+  <body class="options-body">
+    <div id="root"></div>
+    <script src="vendor/react/umd/react.production.min.js"></script>
+    <script src="vendor/react-dom/umd/react-dom.production.min.js"></script>
+    <script src="lib.js"></script>
+    <script src="book.js"></script>
   </body>
 </html>
