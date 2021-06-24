@@ -1,10 +1,10 @@
 {
   "name": "collect-new-english-words",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "",
   "main": "background.js",
   "scripts": {
-    "build": "gulp"
+    "pkg": "gulp"
   },
   "repository": {
     "type": "git",

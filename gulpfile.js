@@ -22,6 +22,8 @@ function zipFiles() {
     "images/*",
     "vendor/**/*",
     "background.js",
+    "book.html",
+    "book.js",
     "lib.js",
     "main.css",
     "manifest.json",
