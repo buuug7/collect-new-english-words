@@ -40,7 +40,7 @@ function HeaderLeft({ words }) {
           onChange={() => {
             document
               .querySelector(".word-list")
-              .classList.toggle("grid-template-columns-2");
+              .classList.toggle("grid-column-2");
           }}
         />
       </div>

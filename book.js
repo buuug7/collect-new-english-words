@@ -46,7 +46,7 @@ function HeaderLeft({
   }, "toggle view"), /*#__PURE__*/React.createElement("input", {
     type: "checkbox",
     onChange: () => {
-      document.querySelector(".word-list").classList.toggle("grid-template-columns-2");
+      document.querySelector(".word-list").classList.toggle("grid-column-2");
     }
   })));
 }

@@ -89,6 +89,6 @@ body {
   font-size: 1.2rem;
 }
 
-.grid-template-columns-2 {
+.grid-column-2 {
   grid-template-columns: repeat(2, 1fr) !important;
 }
