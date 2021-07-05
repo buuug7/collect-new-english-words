@@ -11,16 +11,16 @@ memories later.
 
 selection the word in the webpage that you want to collect, right click and select the **Add to my vocabulary book** menu item in the context menu.
 
+## 类别以及语言
+
+- 类别: 生产工具
+- 语言: 英语,汉语
+
 ## screenshot
 
 <p>
   <img src="./images/screen-2.png">
 </p>
-
-## 类别以及语言
-
-- 类别: 生产工具
-- 语言: 英语,汉语
 
 ## Privacy policy requirement of published to chrome web store
 

@@ -1,8 +1,8 @@
 self.importScripts("lib.js");
 
 const menu = {
-  id: `my_new_words_book_add_menu`,
-  title: `Add to my words book(dev)`,
+  id: `english-vocabulary-book-add-word-menu`,
+  title: `Add to my vocabulary book(dev)`,
 };
 
 init().then(() => {});
