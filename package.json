@@ -1,5 +1,5 @@
 {
-  "name": "collect-new-english-words",
+  "name": "english-vocabulary-book",
   "version": "0.1.3",
   "description": "",
   "main": "background.js",
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/buuug7/my-new-words-book.git"
+    "url": "git+https://github.com/buuug7/english-vocabulary-book.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/buuug7/my-new-words-book/issues"
+    "url": "https://github.com/buuug7/english-vocabulary-book/issues"
   },
-  "homepage": "https://github.com/buuug7/my-new-words-book#readme",
+  "homepage": "https://github.com/buuug7/english-vocabulary-book#readme",
   "dependencies": {
     "@buuug7/simplify-button": "^0.0.9",
     "react": "^17.0.2",

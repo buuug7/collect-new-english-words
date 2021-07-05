@@ -1,23 +1,26 @@
-# 英语生词本 (English Vocabulary Book) (Chrome extension)
+# 英语生词本 (English Vocabulary Book)
 
-A Chrome extension that collect unfamiliar English words to my vocabulary book, the collection words can be used to review and
+一个 Chrome 扩展，可以将不熟悉的英语单词收集到我的生词本中，收集的单词以后可以用来复习和记忆. 在网页中选择您要收集的单词，右键单击并在上下文菜单中选择 **添加到我的生词本** 菜单项.
+
+A Chrome extension that collect unfamiliar english words to my vocabulary book, the collection words can be used to review and
 memories later.
 
-selection the word in the webpage that you want to collect, right click and select the **Add to my words book** menu item in the context menu.
+selection the word in the webpage that you want to collect, right click and select the **Add to my vocabulary book** menu item in the context menu.
 
+## Privacy policy requirement of published to chrome web store
 
-## single use 
+#### 单一用途 single use
 
-just select the word of webpage, select the word that you interest, right click and Add to my words for later review and study.
+Only used to collect those unfamiliar English words in the web page, it is for learning purpose. select the word in the webpage that you interested, right click and select **Add to my vocabulary book** menu item in the context menu for later review and study.
 
-## why storage permission
+#### 需求 storage 的理由 why storage permission
 
 The collected words must be accessed across multiple devices, and the data is always sync, so storage permission are need.
 
-## why contextMenus permission
+#### 需请求 contextMenus 的理由 why contextMenus permission
 
-In order to make it easier for users to add English new words to the new words book, context menu must have, because it improves the user experience of using the extension.
+In order to make it easier for users to add unfamiliar english word to my vocabulary book, context menu must be have, because it improves the user experience of using the extension.
 
-## why notification permission
+#### 需请求 contextMenus 的理由\* why notification permission
 
-the notification gives the user response after some operations success or failed, it also gives users the best more interactive experience.
+The notification gives the user response after some operations success or failed, it also gives users the best interactive experience of using extension.
