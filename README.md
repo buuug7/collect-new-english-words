@@ -19,7 +19,7 @@ selection the word in the webpage that you want to collect, right click and sele
 ## screenshot
 
 <p>
-  <img src="./images/screen-2.png">
+  <img src="./images/screen-1.png">
 </p>
 
 ## Privacy policy requirement of published to chrome web store

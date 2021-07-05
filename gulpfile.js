@@ -1,5 +1,7 @@
-const { src, dest, series } = require("gulp");
+const { src, dest, series, watch } = require("gulp");
 const zip = require("gulp-zip");
+const babel = require("gulp-babel");
+
 const packageMeta = require("./package.json");
 
 /**
@@ -17,26 +19,49 @@ function copyDependencies() {
   return src(srcFiles, { base: "node_modules" }).pipe(dest("vendor/"));
 }
 
-function zipFiles() {
-  const zipFiles = [
-    "images/*",
-    "vendor/**/*",
-    "background.js",
-    "book.html",
-    "book.js",
-    "lib.js",
-    "main.css",
-    "manifest.json",
-    "options.html",
-    "options.js",
-    "popup.html",
-    "popup.js",
-    "README.md",
-  ];
+const filesOfZip = [
+  "images/*",
+  "vendor/**/*",
+  "background.js",
+  "book.html",
+  "book.js",
+  "lib.js",
+  "main.css",
+  "manifest.json",
+  "options.html",
+  "options.js",
+  "popup.html",
+  "popup.js",
+  "README.md",
+  "CHANGELOG.md",
+];
 
-  return src(zipFiles, { base: "." })
+/**
+ * zip files and for uploaded to chrome web store
+ * @return {*}
+ */
+function zipFiles() {
+  return src(filesOfZip, { base: "." })
     .pipe(zip(`${packageMeta.name}-v${packageMeta.version}.zip`))
     .pipe(dest("."));
 }
 
-exports.default = series(copyDependencies, zipFiles);
+const jsxFiles = ["src/**/*.jsx"];
+
+function jsxCompile() {
+  return src(jsxFiles).pipe(babel()).pipe(dest("."));
+}
+
+function jsxWatch() {
+  watch(jsxFiles, function (cb) {
+    jsxCompile();
+    cb();
+  });
+}
+
+module.exports = {
+  copyDependencies,
+  jsxCompile,
+  watch: series(jsxWatch),
+  default: series(copyDependencies, jsxCompile, zipFiles),
+};

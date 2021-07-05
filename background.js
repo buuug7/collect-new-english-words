@@ -5,7 +5,9 @@ const menu = {
   title: `Add to my vocabulary book(dev)`,
 };
 
-init().then(() => {});
+init().then(() => {
+  //
+});
 
 async function init() {
   chrome.runtime.onInstalled.addListener(() => {

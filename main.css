@@ -18,10 +18,7 @@ body {
   white-space: nowrap;
 }
 
-.btn.small {
-  padding: 2px 5px;
-  transform: none;
-}
+
 
 .menu {
   padding: 0;
@@ -40,58 +37,50 @@ body {
   background-color: rgba(1, 1, 1, 0.1);
 }
 
-/* options.html */
+/* book.html */
 
-.no-words {
-  text-align: center;
-}
-
-.options-body {
+.bg-v1 {
   background-color: #f7f7f7;
 }
 
-.options-header {
+.header {
   background-color: #fff;
   width: 100%;
   z-index: 999;
   display: flex;
   justify-content: space-between;
-  padding: 0.25rem;
+  padding: 0.5rem 0;
   box-shadow: 0 6px 6px rgb(31 107 255 / 5%);
   position: fixed;
   left: 0;
   top: 0;
 }
 
-.options-logo {
+.logo {
   width: 32px;
   height: 32px;
   position: relative;
 }
 
 @media (max-width: 640px) {
-  .options-header,
-  .header-left {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .options-header .header-left > * {
-    margin-bottom: 0.3rem !important;
-  }
-
-  .words {
+  .word-list {
     margin-top: 10rem;
+  }
+
+  .translate-setting,
+  .toggle-view {
+    display: none !important;
   }
 }
 
-.words {
+.word-list {
   margin-top: 4rem;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-gap: 1rem;
 }
-.words > .word {
+
+.word-list > .word {
   border-bottom: 1px solid #eee;
   position: relative;
   display: flex;
@@ -100,9 +89,6 @@ body {
   font-size: 1.2rem;
 }
 
-.words > .word > .word-text {
-}
-
-.words-list-2-c {
+.grid-template-columns-2 {
   grid-template-columns: repeat(2, 1fr) !important;
 }
