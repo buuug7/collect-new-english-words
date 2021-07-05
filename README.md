@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./images/icon-128x128.png" width="100px" height="100px">
+  <img src="./images/icon-128x128.png" width="80px" height="80px">
 </p>
 
 # 英语生词本 (English Vocabulary Book)
@@ -18,7 +18,7 @@ selection the word in the webpage that you want to collect, right click and sele
 
 ## Privacy policy requirement of published to chrome web store
 
-#### 单一用途 (single use)
+#### single use
 
 Only used to collect those unfamiliar English words in the web page, it is for learning purpose. select the word in the webpage that you interested, right click and select **Add to my vocabulary book** menu item in the context menu for later review and study.
 
