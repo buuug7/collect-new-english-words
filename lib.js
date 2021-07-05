@@ -8,37 +8,6 @@ function generateUID() {
   return firstPart + secondPart;
 }
 
-function uuidv4() {
-  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
-    const r = (Math.random() * 16) | 0,
-      v = c == "x" ? r : (r & 0x3) | 0x8;
-    return v.toString(16);
-  });
-}
-
-async function createWordDom(word) {
-  const dom = document.createElement("div");
-  dom.classList.add("word");
-  dom.setAttribute("data-text", word.text);
-  dom.setAttribute("data-id", word.id);
-
-  const translateVendor = await getTranslateVendor();
-
-  const detailLink =
-    translateVendor === "google"
-      ? `https://translate.google.com/?sl=en&tl=zh-CN&text=${word.text}&op=translate`
-      : `https://fanyi.baidu.com/#en/zh/${word.text}`;
-
-  dom.innerHTML = `
-<div class="display-flex flex-center">
-  <input type="checkbox">
-  <a class="ml-2 word-text" href=${detailLink} target="_blank">${word.text}</a>
-</div>
-`;
-
-  return dom;
-}
-
 function getTranslateVendor() {
   return new Promise((resolve, reject) => {
     chrome.storage.sync.get("translateVendor", (data) => {

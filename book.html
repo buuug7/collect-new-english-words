@@ -10,6 +10,76 @@
     <link rel="stylesheet" href="vendor/utilities-css/dist/utilities-css.css" />
     <link rel="stylesheet" href="main.css" />
     <title>Book</title>
+    <style>
+      .bg-v1 {
+        background-color: #f7f7f7;
+      }
+
+      .header {
+        background-color: #fff;
+        width: 100%;
+        z-index: 999;
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem 0;
+        box-shadow: 0 6px 6px rgb(31 107 255 / 5%);
+        position: fixed;
+        left: 0;
+        top: 0;
+      }
+
+      .logo {
+        width: 32px;
+        height: 32px;
+        position: relative;
+      }
+
+      @media (max-width: 640px) {
+        .word-list {
+          margin-top: 10rem;
+        }
+
+        .translate-setting,
+        .toggle-view {
+          display: none !important;
+        }
+      }
+
+      .word-list {
+        margin-top: 4rem;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 1rem;
+      }
+
+      .word-list > .word {
+        border-bottom: 1px solid #eee;
+        position: relative;
+        display: flex;
+        align-items: center;
+        font-size: 1.2rem;
+        padding: 0.5rem 0;
+      }
+
+      .word-list .word:last-child {
+        border-bottom: none;
+      }
+
+      .word > a {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+        height: 30px;
+      }
+
+      .word > input[type="checkbox"] {
+        margin-bottom: -2px;
+      }
+
+      .grid-column-2 {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+    </style>
   </head>
   <body class="bg-v1">
     <div id="root"></div>

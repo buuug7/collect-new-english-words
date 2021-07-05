@@ -4,7 +4,7 @@
  */
 
 const { useEffect, useState } = React;
-const __q = document.querySelector;
+const __q = (selector) => document.querySelector(selector);
 
 function HeaderLeft({ words }) {
   const [translator, setTranslator] = useState(false);
@@ -143,16 +143,14 @@ function Word({ word, itemSelected }) {
 
   return (
     <div className="word">
-      <div className="display-flex flex-center">
-        <input
-          type="checkbox"
-          checked={!!word.checked}
-          onChange={onChangeHandler}
-        />
-        <a href={detailLink} className="ml-2 word-text" target="_blank">
-          {word.text}
-        </a>
-      </div>
+      <input
+        type="checkbox"
+        checked={!!word.checked}
+        onChange={onChangeHandler}
+      />
+      <a href={detailLink} className="ml-2 word-text" target="_blank">
+        {word.text}
+      </a>
     </div>
   );
 }

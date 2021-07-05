@@ -6,7 +6,8 @@ const {
   useEffect,
   useState
 } = React;
-const __q = document.querySelector;
+
+const __q = selector => document.querySelector(selector);
 
 function HeaderLeft({
   words
@@ -143,8 +144,6 @@ function Word({
 
   return /*#__PURE__*/React.createElement("div", {
     className: "word"
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "display-flex flex-center"
   }, /*#__PURE__*/React.createElement("input", {
     type: "checkbox",
     checked: !!word.checked,
@@ -153,7 +152,7 @@ function Word({
     href: detailLink,
     className: "ml-2 word-text",
     target: "_blank"
-  }, word.text)));
+  }, word.text));
 }
 
 function WordList({
