@@ -19,10 +19,10 @@ selection the word in the webpage that you want to collect, right click and sele
 ## screenshot
 
 <p>
-  <img src="./images/screen-1.png">
+  <img src="./images/screen-3.png" width="100%">
 </p>
 
-## Privacy policy requirement of published to chrome web store
+## Privacy policy requirements of published to Chrome web store
 
 #### single use
 
@@ -34,7 +34,7 @@ The collected words must be accessed across multiple devices, and the data is al
 
 #### why contextMenus permission
 
-In order to make it easier for users to add unfamiliar english word to my vocabulary book, context menu must be have, because it improves the user experience of using the extension.
+In order to make it easier for users to add unfamiliar english word to my vocabulary book, context menu must have, because it improves the user experience of using the extension.
 
 #### why notification permission
 
