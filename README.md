@@ -14,8 +14,6 @@ selection the word in the webpage that you want to collect, right click and sele
 
 [link-chrome]: https://chrome.google.com/webstore/detail/refined-github/hlepfoohegkhhmjieoechaddaejaokhf "Version published on Chrome Web Store"
 
-
-
 download from Chrome web store [<img src="https://raw.githubusercontent.com/alrra/browser-logos/90fdf03c/src/chrome/chrome.svg" width="32" alt="Chrome" valign="middle">][link-chrome] [<img valign="middle" src="https://img.shields.io/chrome-web-store/v/hlepfoohegkhhmjieoechaddaejaokhf.svg?label=%20">][link-chrome]
 
 or download it from the [GitHub release]()
@@ -25,7 +23,7 @@ or download it from the [GitHub release]()
 - 类别: 生产工具
 - 语言: 英语,汉语
 
-## screenshot
+## Screenshot
 
 <p>
   <img src="./images/screen-3.png" width="100%">

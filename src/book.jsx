@@ -4,6 +4,7 @@
  */
 
 const { useEffect, useState } = React;
+const __q = document.querySelector;
 
 function HeaderLeft({ words }) {
   const [translator, setTranslator] = useState(false);
@@ -14,9 +15,16 @@ function HeaderLeft({ words }) {
     });
   }, []);
 
+  const translateChangeHandler = (event) => {
+    const checked = event.target.checked;
+    setTranslateVendor(checked ? "google" : "").then(() => {
+      location.reload();
+    });
+  };
+
   return (
     <div className="header-left display-flex flex-center">
-      <img src="/images/icon-32x32.png" className="logo" />
+      <img src="/images/icon-32x32.png" className="logo" alt="logo" />
       <span className="mx-2" style={{ fontSize: "1.1rem" }}>
         生词本 {`(${words.length})`}
       </span>
@@ -25,12 +33,7 @@ function HeaderLeft({ words }) {
         <input
           type="checkbox"
           checked={translator}
-          onChange={(event) => {
-            const checked = event.target.checked;
-            setTranslateVendor(checked ? "google" : "").then((r) => {
-              location.reload();
-            });
-          }}
+          onChange={translateChangeHandler}
         />
       </div>
       <div className="toggle-view display-flex align-items-center ml-2 mx-1">
@@ -38,9 +41,7 @@ function HeaderLeft({ words }) {
         <input
           type="checkbox"
           onChange={() => {
-            document
-              .querySelector(".word-list")
-              .classList.toggle("grid-column-2");
+            __q(".word-list").classList.toggle("grid-column-2");
           }}
         />
       </div>
@@ -54,51 +55,56 @@ function HeaderRight({ words }) {
   const texts = selectedItems.map((it) => it.text);
   const deleteCount = ids.length;
 
+  const deleteHandler = () => {
+    const _confirm = window.confirm(
+      `Do you really want to delete <${texts.join(",")}> words?`
+    );
+
+    if (!_confirm) {
+      return;
+    }
+
+    deleteWordByIds(ids).then(() => {
+      location.reload();
+    });
+  };
+
+  const outputHandler = () => {
+    getWords().then((words) => {
+      if (words.length === 0) {
+        sendNotification(`There is no collected words for export!`);
+        return;
+      }
+
+      const _words = words.map((item) => item.text);
+      const data = JSON.stringify(_words, null, 4);
+      const blob = new Blob([data], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute(
+        "download",
+        `collect-new-english-words-${generateUID()}.json`
+      );
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  };
+
+  const buttonText = `delete ${deleteCount ? "(" + deleteCount + ")" : ""}`;
+
   return (
     <div className="header-right">
       <button
-        className={`btn small ${ids.length > 0 ? "primary" : "disabled"}`}
-        onClick={() => {
-          const _confirm = window.confirm(
-            `Do you really want to delete <${texts.join(",")}> words?`
-          );
-
-          if (!_confirm) {
-            return;
-          }
-
-          deleteWordByIds(ids).then((r) => {
-            location.reload();
-          });
-        }}
-      >{`delete ${deleteCount ? `(${deleteCount})` : ""}`}</button>
-
-      <button
-        className="btn small nowrap primary ml-2"
-        onClick={() => {
-          getWords().then((words) => {
-            if (words.length === 0) {
-              sendNotification(`There is no collected words for export!`);
-              return;
-            }
-
-            const _words = words.map((item) => item.text);
-            const data = JSON.stringify(_words, null, 4);
-            const blob = new Blob([data], { type: "application/json" });
-            const url = URL.createObjectURL(blob);
-
-            const link = document.createElement("a");
-            link.href = url;
-            link.setAttribute(
-              "download",
-              `collect-new-english-words-${generateUID()}.json`
-            );
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-          });
-        }}
+        className={`btn small ${deleteCount > 0 ? "primary" : "disabled"}`}
+        onClick={deleteHandler}
       >
+        {buttonText}
+      </button>
+
+      <button className="btn small nowrap primary ml-2" onClick={outputHandler}>
         output
       </button>
     </div>
@@ -128,18 +134,20 @@ function Word({ word, itemSelected }) {
       ? `https://translate.google.com/?sl=en&tl=zh-CN&text=${word.text}&op=translate`
       : `https://fanyi.baidu.com/#en/zh/${word.text}`;
 
+  const onChangeHandler = (event) => {
+    itemSelected({
+      ...word,
+      checked: event.target.checked,
+    });
+  };
+
   return (
     <div className="word">
       <div className="display-flex flex-center">
         <input
           type="checkbox"
           checked={!!word.checked}
-          onChange={(event) => {
-            itemSelected({
-              ...word,
-              checked: event.target.checked,
-            });
-          }}
+          onChange={onChangeHandler}
         />
         <a href={detailLink} className="ml-2 word-text" target="_blank">
           {word.text}
@@ -183,4 +191,4 @@ function App() {
   );
 }
 
-ReactDOM.render(<App />, document.querySelector("#root"));
+ReactDOM.render(<App />, __q("#root"));

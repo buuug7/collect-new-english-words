@@ -11,22 +11,24 @@ function App() {
     });
   }, []);
 
+  const translateChangeHandler = (event) => {
+    const checked = event.target.checked;
+    setTranslateVendor(checked ? "google" : "").then(() => {
+      location.reload();
+    });
+  };
+
   return (
     <div className="m-4">
-      <h2>collect new english words</h2>
+      <h2>英语生词本(English Vocabulary Book)</h2>
       <h4>Settings</h4>
       <div className="container">
         <div className="display-flex mb-2">
-          <label className="use-google-translate">use google translate</label>
+          <label>use google translate</label>
           <input
             type="checkbox"
             checked={translator}
-            onChange={() => {
-              const checked = event.target.checked;
-              setTranslateVendor(checked ? "google" : "").then((r) => {
-                location.reload();
-              });
-            }}
+            onChange={translateChangeHandler}
           />
         </div>
       </div>

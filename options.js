@@ -9,23 +9,24 @@ function App() {
       setTranslator(!!r);
     });
   }, []);
+
+  const translateChangeHandler = event => {
+    const checked = event.target.checked;
+    setTranslateVendor(checked ? "google" : "").then(() => {
+      location.reload();
+    });
+  };
+
   return /*#__PURE__*/React.createElement("div", {
     className: "m-4"
-  }, /*#__PURE__*/React.createElement("h2", null, "collect new english words"), /*#__PURE__*/React.createElement("h4", null, "Settings"), /*#__PURE__*/React.createElement("div", {
+  }, /*#__PURE__*/React.createElement("h2", null, "\u82F1\u8BED\u751F\u8BCD\u672C(English Vocabulary Book)"), /*#__PURE__*/React.createElement("h4", null, "Settings"), /*#__PURE__*/React.createElement("div", {
     className: "container"
   }, /*#__PURE__*/React.createElement("div", {
     className: "display-flex mb-2"
-  }, /*#__PURE__*/React.createElement("label", {
-    className: "use-google-translate"
-  }, "use google translate"), /*#__PURE__*/React.createElement("input", {
+  }, /*#__PURE__*/React.createElement("label", null, "use google translate"), /*#__PURE__*/React.createElement("input", {
     type: "checkbox",
     checked: translator,
-    onChange: () => {
-      const checked = event.target.checked;
-      setTranslateVendor(checked ? "google" : "").then(r => {
-        location.reload();
-      });
-    }
+    onChange: translateChangeHandler
   }))));
 }
 

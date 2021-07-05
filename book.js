@@ -6,6 +6,7 @@ const {
   useEffect,
   useState
 } = React;
+const __q = document.querySelector;
 
 function HeaderLeft({
   words
@@ -16,11 +17,20 @@ function HeaderLeft({
       setTranslator(!!r);
     });
   }, []);
+
+  const translateChangeHandler = event => {
+    const checked = event.target.checked;
+    setTranslateVendor(checked ? "google" : "").then(() => {
+      location.reload();
+    });
+  };
+
   return /*#__PURE__*/React.createElement("div", {
     className: "header-left display-flex flex-center"
   }, /*#__PURE__*/React.createElement("img", {
     src: "/images/icon-32x32.png",
-    className: "logo"
+    className: "logo",
+    alt: "logo"
   }), /*#__PURE__*/React.createElement("span", {
     className: "mx-2",
     style: {
@@ -33,12 +43,7 @@ function HeaderLeft({
   }, "use google translate"), /*#__PURE__*/React.createElement("input", {
     type: "checkbox",
     checked: translator,
-    onChange: event => {
-      const checked = event.target.checked;
-      setTranslateVendor(checked ? "google" : "").then(r => {
-        location.reload();
-      });
-    }
+    onChange: translateChangeHandler
   })), /*#__PURE__*/React.createElement("div", {
     className: "toggle-view display-flex align-items-center ml-2 mx-1"
   }, /*#__PURE__*/React.createElement("label", {
@@ -46,7 +51,7 @@ function HeaderLeft({
   }, "toggle view"), /*#__PURE__*/React.createElement("input", {
     type: "checkbox",
     onChange: () => {
-      document.querySelector(".word-list").classList.toggle("grid-column-2");
+      __q(".word-list").classList.toggle("grid-column-2");
     }
   })));
 }
@@ -58,45 +63,51 @@ function HeaderRight({
   const ids = selectedItems.map(it => it.id);
   const texts = selectedItems.map(it => it.text);
   const deleteCount = ids.length;
-  return /*#__PURE__*/React.createElement("div", {
-    className: "header-right"
-  }, /*#__PURE__*/React.createElement("button", {
-    className: `btn small ${ids.length > 0 ? "primary" : "disabled"}`,
-    onClick: () => {
-      const _confirm = window.confirm(`Do you really want to delete <${texts.join(",")}> words?`);
 
-      if (!_confirm) {
+  const deleteHandler = () => {
+    const _confirm = window.confirm(`Do you really want to delete <${texts.join(",")}> words?`);
+
+    if (!_confirm) {
+      return;
+    }
+
+    deleteWordByIds(ids).then(() => {
+      location.reload();
+    });
+  };
+
+  const outputHandler = () => {
+    getWords().then(words => {
+      if (words.length === 0) {
+        sendNotification(`There is no collected words for export!`);
         return;
       }
 
-      deleteWordByIds(ids).then(r => {
-        location.reload();
+      const _words = words.map(item => item.text);
+
+      const data = JSON.stringify(_words, null, 4);
+      const blob = new Blob([data], {
+        type: "application/json"
       });
-    }
-  }, `delete ${deleteCount ? `(${deleteCount})` : ""}`), /*#__PURE__*/React.createElement("button", {
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", `collect-new-english-words-${generateUID()}.json`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  };
+
+  const buttonText = `delete ${deleteCount ? "(" + deleteCount + ")" : ""}`;
+  return /*#__PURE__*/React.createElement("div", {
+    className: "header-right"
+  }, /*#__PURE__*/React.createElement("button", {
+    className: `btn small ${deleteCount > 0 ? "primary" : "disabled"}`,
+    onClick: deleteHandler
+  }, buttonText), /*#__PURE__*/React.createElement("button", {
     className: "btn small nowrap primary ml-2",
-    onClick: () => {
-      getWords().then(words => {
-        if (words.length === 0) {
-          sendNotification(`There is no collected words for export!`);
-          return;
-        }
-
-        const _words = words.map(item => item.text);
-
-        const data = JSON.stringify(_words, null, 4);
-        const blob = new Blob([data], {
-          type: "application/json"
-        });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.setAttribute("download", `collect-new-english-words-${generateUID()}.json`);
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      });
-    }
+    onClick: outputHandler
   }, "output"));
 }
 
@@ -123,6 +134,13 @@ function Word({
     });
   }, []);
   const detailLink = translator === "google" ? `https://translate.google.com/?sl=en&tl=zh-CN&text=${word.text}&op=translate` : `https://fanyi.baidu.com/#en/zh/${word.text}`;
+
+  const onChangeHandler = event => {
+    itemSelected({ ...word,
+      checked: event.target.checked
+    });
+  };
+
   return /*#__PURE__*/React.createElement("div", {
     className: "word"
   }, /*#__PURE__*/React.createElement("div", {
@@ -130,11 +148,7 @@ function Word({
   }, /*#__PURE__*/React.createElement("input", {
     type: "checkbox",
     checked: !!word.checked,
-    onChange: event => {
-      itemSelected({ ...word,
-        checked: event.target.checked
-      });
-    }
+    onChange: onChangeHandler
   }), /*#__PURE__*/React.createElement("a", {
     href: detailLink,
     className: "ml-2 word-text",
@@ -181,4 +195,4 @@ function App() {
   }));
 }
 
-ReactDOM.render( /*#__PURE__*/React.createElement(App, null), document.querySelector("#root"));
+ReactDOM.render( /*#__PURE__*/React.createElement(App, null), __q("#root"));
