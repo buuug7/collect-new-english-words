@@ -1,8 +1,7 @@
 <p align="center">
   <img src="./images/icon-128x128.png" width="80px" height="80px">
 </p>
-
-# 英语生词本 (English Vocabulary Book)
+<h1 align="center">英语生词本 (English Vocabulary Book)</h1>
 
 一个 Chrome 扩展，可以将不熟悉的英语单词收集到我的生词本中，收集的单词以后可以用来复习和记忆. 在网页中选择您要收集的单词，右键单击并在上下文菜单中选择 **添加到我的生词本** 菜单项.
 
@@ -10,6 +9,12 @@ A Chrome extension that collect unfamiliar english words to my vocabulary book, 
 memories later.
 
 selection the word in the webpage that you want to collect, right click and select the **Add to my vocabulary book** menu item in the context menu.
+
+## Install
+
+[link-chrome]: https://chrome.google.com/webstore/detail/refined-github/hlepfoohegkhhmjieoechaddaejaokhf "Version published on Chrome Web Store"
+
+[<img src="https://raw.githubusercontent.com/alrra/browser-logos/90fdf03c/src/chrome/chrome.svg" width="32" alt="Chrome" valign="middle">][link-chrome] [<img valign="middle" src="https://img.shields.io/chrome-web-store/v/hlepfoohegkhhmjieoechaddaejaokhf.svg?label=%20">][link-chrome]
 
 ## 类别以及语言
 
