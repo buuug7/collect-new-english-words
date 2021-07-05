@@ -1,6 +1,6 @@
-# collect new english words
+# 英语生词本 (English Vocabulary Book) (Chrome extension)
 
-A Chrome extension that collection the new english word to my words book, the collection words can be used to review and
+A Chrome extension that collect unfamiliar English words to my vocabulary book, the collection words can be used to review and
 memories later.
 
 selection the word in the webpage that you want to collect, right click and select the **Add to my words book** menu item in the context menu.
