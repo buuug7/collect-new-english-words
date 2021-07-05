@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./images/icon-128x128.png" width="64px" height="64px">
+  <img src="./images/icon-128x128.png" width="72px" height="72px">
 </p>
 <h1 align="center">英语生词本 (English Vocabulary Book)</h1>
 
