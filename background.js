@@ -2,12 +2,10 @@ self.importScripts("lib.js");
 
 const menu = {
   id: `english-vocabulary-book-add-word-menu`,
-  title: `Add to my vocabulary book(dev)`,
+  title: `Add to my vocabulary book`,
 };
 
-init().then(() => {
-  //
-});
+init().then(() => {});
 
 async function init() {
   chrome.runtime.onInstalled.addListener(() => {
