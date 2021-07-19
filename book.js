@@ -38,18 +38,20 @@ function HeaderLeft({
       fontSize: "1.1rem"
     }
   }, "\u751F\u8BCD\u672C ", `(${words.length})`), /*#__PURE__*/React.createElement("div", {
-    className: "translate-setting display-flex align-items-center mx-1 "
+    className: "form-check translate-setting mx-1 "
   }, /*#__PURE__*/React.createElement("label", {
-    className: "label"
+    className: "form-check-label"
   }, "use google translate"), /*#__PURE__*/React.createElement("input", {
+    className: "form-check-input",
     type: "checkbox",
     checked: translator,
     onChange: translateChangeHandler
   })), /*#__PURE__*/React.createElement("div", {
-    className: "toggle-view display-flex align-items-center ml-2 mx-1"
+    className: "form-check toggle-view ml-2 mx-1 "
   }, /*#__PURE__*/React.createElement("label", {
-    className: "nowrap"
+    className: "form-check-label"
   }, "toggle view"), /*#__PURE__*/React.createElement("input", {
+    className: "form-check-input",
     type: "checkbox",
     onChange: () => {
       __q(".word-list").classList.toggle("grid-column-2");
@@ -77,7 +79,7 @@ function HeaderRight({
     });
   };
 
-  const outputHandler = () => {
+  const exportHandler = () => {
     getWords().then(words => {
       if (words.length === 0) {
         sendNotification(`There is no collected words for export!`);
@@ -108,8 +110,8 @@ function HeaderRight({
     onClick: deleteHandler
   }, buttonText), /*#__PURE__*/React.createElement("button", {
     className: "btn small nowrap primary ml-2",
-    onClick: outputHandler
-  }, "output"));
+    onClick: exportHandler
+  }, "export"));
 }
 
 function Header({
@@ -144,11 +146,14 @@ function Word({
 
   return /*#__PURE__*/React.createElement("div", {
     className: "word"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "form-check inline"
   }, /*#__PURE__*/React.createElement("input", {
+    className: "form-check-input",
     type: "checkbox",
     checked: !!word.checked,
     onChange: onChangeHandler
-  }), /*#__PURE__*/React.createElement("a", {
+  })), /*#__PURE__*/React.createElement("a", {
     href: detailLink,
     className: "ml-2 word-text",
     target: "_blank"

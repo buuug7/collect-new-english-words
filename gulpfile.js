@@ -10,7 +10,9 @@ const packageMeta = require("./package.json");
  */
 function copyDependencies() {
   const srcFiles = [
+    "node_modules/bootstrap/dist/css/bootstrap-reboot.css",
     "node_modules/@buuug7/simplify-button/index.css",
+    "node_modules/@buuug7/simplify-form/index.css",
     "node_modules/utilities-css/dist/utilities-css.css",
     "node_modules/react/umd/react.production.min.js",
     "node_modules/react-dom/umd/react-dom.production.min.js",
@@ -25,15 +27,14 @@ const filesOfZip = [
   "background.js",
   "book.html",
   "book.js",
+  "CHANGELOG.md",
   "lib.js",
-  "main.css",
   "manifest.json",
   "options.html",
   "options.js",
   "popup.html",
   "popup.js",
   "README.md",
-  "CHANGELOG.md",
 ];
 
 /**

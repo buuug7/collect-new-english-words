@@ -28,17 +28,19 @@ function HeaderLeft({ words }) {
       <span className="mx-2" style={{ fontSize: "1.1rem" }}>
         生词本 {`(${words.length})`}
       </span>
-      <div className="translate-setting display-flex align-items-center mx-1 ">
-        <label className="label">use google translate</label>
+      <div className="form-check translate-setting mx-1 ">
+        <label className="form-check-label">use google translate</label>
         <input
+          className="form-check-input"
           type="checkbox"
           checked={translator}
           onChange={translateChangeHandler}
         />
       </div>
-      <div className="toggle-view display-flex align-items-center ml-2 mx-1">
-        <label className="nowrap">toggle view</label>
+      <div className="form-check toggle-view ml-2 mx-1 ">
+        <label className="form-check-label">toggle view</label>
         <input
+          className="form-check-input"
           type="checkbox"
           onChange={() => {
             __q(".word-list").classList.toggle("grid-column-2");
@@ -69,7 +71,7 @@ function HeaderRight({ words }) {
     });
   };
 
-  const outputHandler = () => {
+  const exportHandler = () => {
     getWords().then((words) => {
       if (words.length === 0) {
         sendNotification(`There is no collected words for export!`);
@@ -104,8 +106,8 @@ function HeaderRight({ words }) {
         {buttonText}
       </button>
 
-      <button className="btn small nowrap primary ml-2" onClick={outputHandler}>
-        output
+      <button className="btn small nowrap primary ml-2" onClick={exportHandler}>
+        export
       </button>
     </div>
   );
@@ -143,11 +145,14 @@ function Word({ word, itemSelected }) {
 
   return (
     <div className="word">
-      <input
-        type="checkbox"
-        checked={!!word.checked}
-        onChange={onChangeHandler}
-      />
+      <div className="form-check inline">
+        <input
+          className="form-check-input"
+          type="checkbox"
+          checked={!!word.checked}
+          onChange={onChangeHandler}
+        />
+      </div>
       <a href={detailLink} className="ml-2 word-text" target="_blank">
         {word.text}
       </a>
